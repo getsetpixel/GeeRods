@@ -28,7 +28,7 @@ export const heroSlides = [
 ];
 
 export const stats = [
-  { value: "200+",  label: "Custom builds delivered" },
+  { value: "10+",  label: "Expert in the tackle industry" },
   { value: "48 hr", label: "Average repair turnaround" },
   { value: "100%",  label: "Hand-wrapped guides" },
   { value: "5★",    label: "Customer satisfaction" },

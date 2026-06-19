@@ -16,33 +16,21 @@ import Layout from '../layouts/Layout.astro';
       <div class="contact-form-wrap">
         <h2>Send us a message</h2>
         <form class="contact-form" id="contactForm" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">First name</label>
-              <input type="text" id="fname" name="fname" placeholder="John" required />
-            </div>
-            <div class="form-group">
-              <label for="lname">Last name</label>
-              <input type="text" id="lname" name="lname" placeholder="Smith" required />
-            </div>
+          <div class="form-group">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="Jordan Lee" required />
           </div>
           <div class="form-group">
             <label for="email">Email address</label>
             <input type="email" id="email" name="email" placeholder="you@example.com" required />
           </div>
           <div class="form-group">
-            <label for="service">What do you need?</label>
-            <select id="service" name="service" required>
-              <option value="" disabled selected>Select a service</option>
-              <option value="custom-build">Custom rod build</option>
-              <option value="repair">Rod repair</option>
-              <option value="refinish">Full refinish</option>
-              <option value="other">Something else</option>
-            </select>
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" />
           </div>
           <div class="form-group">
-            <label for="details">Project details</label>
-            <textarea id="details" name="details" rows="5" placeholder="Tell us about your build — species, action, length, budget, timeline, or describe the repair needed…" required></textarea>
+            <label for="details">How can we help?</label>
+            <textarea id="details" name="details" rows="5" placeholder="Tell us what you need — custom build, repair, timeframe, or any other details…" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-full">Send message →</button>
           <div class="form-success hidden" id="formSuccess">
@@ -72,6 +60,15 @@ import Layout from '../layouts/Layout.astro';
           <div>
             <strong>Sending a rod for repair?</strong>
             <span>Email us first and we'll confirm the address and give you a reference number.</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📱</div>
+          <div>
+            <strong>Find us online</strong>
+            <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <br />
+            <a href="https://facebook.com/yourhandle" target="_blank" rel="noopener noreferrer">Facebook</a>
           </div>
         </div>
         <div class="contact-note">

@@ -137,8 +137,34 @@ main {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   margin-left: auto;
+}
+
+.topbar-contact-link,
+.topbar-social-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: var(--r-sm);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.04);
+  transition: color 0.2s, background 0.2s;
+}
+
+.topbar-contact-link:hover,
+.topbar-social-link:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.08);
+}
+
+.topbar-contact-link {
+  font-weight: 600;
+}
+
+.topbar-social-link {
+  white-space: nowrap;
 }
 
 .nav-link {

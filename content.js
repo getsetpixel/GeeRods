@@ -38,11 +38,12 @@ const siteContent = {
      value: the big number/text, label: description.
   ─────────────────────────────────────────────── */
   stats: [
-    { value: '200+',  label: 'Custom builds delivered' },
+    { value: '10+',  label: 'Expert in the tackle industry' },
     { value: '48 hr', label: 'Average repair turnaround' },
     { value: '100%',  label: 'Hand-wrapped guides' },
     { value: '5★',    label: 'Customer satisfaction' }
   ],
+
 
   /* ─── Build types (Builds page) ─────────────────
      The three cards in the "What we build" section.
@@ -67,6 +68,8 @@ const siteContent = {
       alt:     'Custom finish rod'
     }
   ],
+
+
 
   /* ─── Gallery ────────────────────────────────────
      Add new images by adding an object to this array.
