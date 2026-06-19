@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GeeRods — Custom Rod Building &amp; Repair</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- ═══════════════════════════════════════════
+       STATIC HEADER — never moves
+  ════════════════════════════════════════════ -->
+<header class="topbar" role="banner">
+<div class="topbar-inner">
+<a aria-label="GeeRods home" class="brand" data-page="home" href="#">
+<div aria-hidden="true" class="brand-mark">G</div>
+<div class="brand-text">
+<span class="brand-name">GeeRods</span>
+<span class="brand-sub">Build + Repair</span>
+</div>
+</a>
+<nav aria-label="Main navigation" class="site-nav">
+<a class="nav-link" data-page="home" href="#">Home</a>
+<a class="nav-link" data-page="builds" href="#">Builds</a>
+<a class="nav-link" data-page="repairs" href="#">Repairs</a>
+<a class="nav-link" data-page="gallery" href="#">Gallery</a>
+<a class="nav-link btn-nav" data-page="contact" href="#">Get a Quote</a>
+</nav>
+<button aria-expanded="false" aria-label="Open menu" class="nav-toggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+<!-- ═══════════════════════════════════════════
+       MAIN CONTENT AREA — only this scrolls/changes
+  ════════════════════════════════════════════ -->
+<main class="main-content" id="mainContent">
+<!-- ─── PAGE: HOME ─────────────────────────── -->
+<div class="page" id="page-home">
+<!-- Hero -->
+<section class="hero">
+<div class="hero-copy">
+<span class="eyebrow">Custom Rod Specialist · UK</span>
+<h1>Rods built the way you fish.</h1>
+<p>Every blank hand-selected, every guide hand-wrapped. GeeRods builds bespoke fishing rods and carries out expert repairs — crafted to your exact spec, finished to last a lifetime.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" data-page="contact" href="#">Get a Quote ↗</a>
+<a class="btn btn-ghost" data-page="gallery" href="#">View Gallery</a>
+</div>
+</div>
+<div class="hero-visual">
+<div class="hero-card">
+<div class="hero-img-wrap">
+<img alt="Custom rod building workshop" id="heroImg" src="https://proliterods.com/cdn/shop/files/imagejpeg_0_994eeaca-bbcf-4cb6-bbbf-33bfb0a8789b.jpg?v=1741031405&amp;width=1200"/>
+<div class="hero-badge">
+<span id="heroLabel">Featured build</span>
+<strong id="heroTitle">7'6" Custom Bass Rod</strong>
+</div>
+</div>
+<div class="hero-thumbs" id="heroThumbs"></div>
+</div>
+</div>
+</section>
+<!-- Stats strip -->
+<section class="stats-strip"></section>
+<!-- Services overview -->
+<section class="services">
+<div class="section-head">
+<span class="eyebrow">What we do</span>
+<h2>Three ways we can help</h2>
+</div>
+<div class="services-grid">
+<article class="service-card" data-page="builds" role="button" tabindex="0">
+<div class="service-img">
+<img alt="Custom rod building" src="https://www.marlinmag.com/wp-content/uploads/2022/02/custom-fishing-rod-sculpting-1024x768.jpg"/>
+<span class="service-num">01</span>
+</div>
+<div class="service-body">
+<h3>Custom Builds</h3>
+<p>Bespoke blanks, hand-wrapped guides and custom finishes built to your exact spec — species, action, length and handle style all chosen by you.</p>
+<span class="service-link">Explore builds →</span>
+</div>
+</article>
+<article class="service-card" data-page="repairs" role="button" tabindex="0">
+<div class="service-img">
+<img alt="Rod repair and refinishing" src="https://badangling.com/wp-content/uploads/2020/03/13LineUp-600x398.jpg"/>
+<span class="service-num">02</span>
+</div>
+<div class="service-body">
+<h3>Repairs</h3>
+<p>Snapped tips, worn guides, loose reel seats and full refinishing — fast turnaround, premium materials, and a finish that looks factory-fresh.</p>
+<span class="service-link">Explore repairs →</span>
+</div>
+</article>
+<article class="service-card" data-page="contact" role="button" tabindex="0">
+<div class="service-img">
+<img alt="Guide wrapping detail" src="https://files.osgnetworks.tv/15/files/2017/12/Wrap-Threads-Up-by-Tip-Top-Guide.jpg"/>
+<span class="service-num">03</span>
+</div>
+<div class="service-body">
+<h3>Get in Touch</h3>
+<p>Tell us about your next build or repair. We'll map the ideal blank, action and finish — and give you a clear quote with no surprises.</p>
+<span class="service-link">Contact us →</span>
+</div>
+</article>
+</div>
+</section>
+<!-- Process strip -->
+<section class="process">
+<div class="section-head">
+<span class="eyebrow">How it works</span>
+<h2>From brief to blank in four steps</h2>
+</div>
+<div class="process-steps">
+<div class="process-step">
+<div class="step-num">1</div>
+<h4>Tell us your spec</h4>
+<p>Species, action, length, budget — fill in the quote form or drop us an email.</p>
+</div>
+<div aria-hidden="true" class="process-arrow">→</div>
+<div class="process-step">
+<div class="step-num">2</div>
+<h4>We source the blank</h4>
+<p>We hand-pick the right blank from our trusted suppliers and confirm the build plan.</p>
+</div>
+<div aria-hidden="true" class="process-arrow">→</div>
+<div class="process-step">
+<div class="step-num">3</div>
+<h4>Hand-built for you</h4>
+<p>Guides wrapped, handle fitted, finish applied — every step done by hand in our workshop.</p>
+</div>
+<div aria-hidden="true" class="process-arrow">→</div>
+<div class="process-step">
+<div class="step-num">4</div>
+<h4>Delivered ready to fish</h4>
+<p>Fully inspected, carefully packaged and shipped directly to your door.</p>
+</div>
+</div>
+</section>
+<!-- CTA banner -->
+<section class="cta-banner">
+<div class="cta-banner-inner">
+<h2>Ready to spec your rod?</h2>
+<p>Tell us what you're fishing for and we'll build something that performs exactly the way you need it to.</p>
+<a class="btn btn-primary" data-page="contact" href="#">Start your build →</a>
+</div>
+</section>
+</div><!-- /page-home -->
+<!-- ─── PAGE: BUILDS ───────────────────────── -->
+<div class="page hidden" id="page-builds">
+<section class="page-hero page-hero--builds">
+<div class="page-hero-copy">
+<span class="eyebrow">Custom Builds</span>
+<h1>Built around the way you fish.</h1>
+<p>Every rod starts with a conversation. We select the blank, wrap the guides and finish the handle to match your species, style and budget — no compromises.</p>
+</div>
+</section>
+<section class="content-section">
+<div class="section-head">
+<span class="eyebrow">What's included</span>
+<h2>Every build, fully bespoke</h2>
+</div>
+<div class="features-grid">
+<div class="feature-item">
+<div class="feature-icon">⬡</div>
+<h4>Blank selection</h4>
+<p>Carbon, composite or fibreglass — we source from trusted suppliers and match the blank to your target species and casting style.</p>
+</div>
+<div class="feature-item">
+<div class="feature-icon">◎</div>
+<h4>Guide wrapping</h4>
+<p>Guides positioned by hand for optimal line flow, wrapped in your choice of thread colour and sealed with a durable epoxy finish.</p>
+</div>
+<div class="feature-item">
+<div class="feature-icon">▭</div>
+<h4>Handle &amp; reel seat</h4>
+<p>Cork, EVA or custom split-grip — fitted and shaped to your hand size and preferred casting style.</p>
+</div>
+<div class="feature-item">
+<div class="feature-icon">◈</div>
+<h4>Custom finish</h4>
+<p>Decorative wraps, colour bands and personalised details available — your rod, your identity.</p>
+</div>
+</div>
+</section>
+<section class="content-section alt-bg">
+<div class="section-head">
+<span class="eyebrow">Build types</span>
+<h2>What we build</h2>
+</div>
+<div class="build-types"></div>
+</section>
+<section class="content-section">
+<div class="cta-inline">
+<h2>Ready to start your build?</h2>
+<p>Fill in the quote form and we'll come back to you within 24 hours with a full spec and price.</p>
+<a class="btn btn-primary" data-page="contact" href="#">Get a build quote →</a>
+</div>
+</section>
+</div><!-- /page-builds -->
+<!-- ─── PAGE: REPAIRS ──────────────────────── -->
+<div class="page hidden" id="page-repairs">
+<section class="page-hero page-hero--repairs">
+<div class="page-hero-copy">
+<span class="eyebrow">Repairs</span>
+<h1>Back fishing fast.</h1>
+<p>Snapped tips, worn guides, cracked blanks and tired finishes — we fix them all. Fast turnaround, premium materials, and a result that looks and performs like new.</p>
+</div>
+</section>
+<section class="content-section">
+<div class="section-head">
+<span class="eyebrow">Repair services</span>
+<h2>What we fix</h2>
+</div>
+<div class="repair-list">
+<div class="repair-item">
+<div class="repair-icon">✦</div>
+<div>
+<h4>Tip replacement</h4>
+<p>Snapped or damaged tip sections replaced with matched blanks and re-wrapped guides. Most jobs completed same day.</p>
+</div>
+</div>
+<div class="repair-item">
+<div class="repair-icon">✦</div>
+<div>
+<h4>Guide replacement</h4>
+<p>Worn, cracked or missing guides replaced with quality SIC or titanium frames, re-wrapped and epoxy-sealed.</p>
+</div>
+</div>
+<div class="repair-item">
+<div class="repair-icon">✦</div>
+<div>
+<h4>Blank repair</h4>
+<p>Stress cracks and minor fractures stabilised and reinforced — we'll assess and advise honestly on whether repair is worthwhile.</p>
+</div>
+</div>
+<div class="repair-item">
+<div class="repair-icon">✦</div>
+<div>
+<h4>Handle refurbishment</h4>
+<p>Cork and EVA handles cleaned, filled and reshaped. Reel seats tightened or replaced. Looks and feels brand new.</p>
+</div>
+</div>
+<div class="repair-item">
+<div class="repair-icon">✦</div>
+<div>
+<h4>Full refinish</h4>
+<p>Complete strip-back, re-wrap and epoxy coat — ideal for cherished rods that deserve a second life.</p>
+</div>
+</div>
+<div class="repair-item">
+<div class="repair-icon">✦</div>
+<div>
+<h4>Reel seat replacement</h4>
+<p>Loose, cracked or corroded reel seats removed and replaced with quality fittings, properly bedded and sealed.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="content-section alt-bg">
+<div class="turnaround-panel">
+<div class="turnaround-copy">
+<span class="eyebrow">Turnaround</span>
+<h2>Fast, honest, no fuss</h2>
+<p>Most standard repairs are turned around within 48 hours of receiving your rod. We'll always give you an honest assessment — if a repair isn't worth doing, we'll tell you.</p>
+<ul class="turnaround-list">
+<li>Free assessment on all repairs</li>
+<li>No fix, no fee guarantee</li>
+<li>Tracked return shipping available</li>
+<li>Updates at every stage</li>
+</ul>
+<a class="btn btn-primary" data-page="contact" href="#">Send us your rod →</a>
+</div>
+<div class="turnaround-img">
+<img alt="Rod repair in progress" src="https://i.ytimg.com/vi/NaV4LrzDzh4/maxresdefault.jpg"/>
+</div>
+</div>
+</section>
+</div><!-- /page-repairs -->
+<!-- ─── PAGE: GALLERY ──────────────────────── -->
+<div class="page hidden" id="page-gallery">
+<section class="page-hero page-hero--gallery">
+<div class="page-hero-copy">
+<span class="eyebrow">Gallery</span>
+<h1>The work speaks for itself.</h1>
+<p>A selection of recent builds and repairs from the GeeRods workshop — every rod shown was built or restored by hand.</p>
+</div>
+</section>
+<section class="content-section">
+<div class="gallery-filters">
+<button class="filter-btn active" data-filter="all">All</button>
+<button class="filter-btn" data-filter="builds">Builds</button>
+<button class="filter-btn" data-filter="repairs">Repairs</button>
+<button class="filter-btn" data-filter="detail">Detail shots</button>
+</div>
+<div class="gallery-grid" id="galleryGrid"></div>
+</section>
+</div><!-- /page-gallery -->
+<!-- ─── PAGE: CONTACT ──────────────────────── -->
+<div class="page hidden" id="page-contact">
+<section class="page-hero page-hero--contact">
+<div class="page-hero-copy">
+<span class="eyebrow">Get in Touch</span>
+<h1>Let's build something.</h1>
+<p>Whether you have a full spec in mind or just a species and a budget — get in touch and we'll take it from there.</p>
+</div>
+</section>
+<section class="content-section">
+<div class="contact-layout">
+<div class="contact-form-wrap">
+<h2>Send us a message</h2>
+<form class="contact-form" id="contactForm" novalidate="">
+<div class="form-row">
+<div class="form-group">
+<label for="fname">First name</label>
+<input id="fname" name="fname" placeholder="John" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="lname">Last name</label>
+<input id="lname" name="lname" placeholder="Smith" required="" type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label for="email">Email address</label>
+<input id="email" name="email" placeholder="you@example.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="service">What do you need?</label>
+<select id="service" name="service" required="">
+<option disabled="" selected="" value="">Select a service</option>
+<option value="custom-build">Custom rod build</option>
+<option value="repair">Rod repair</option>
+<option value="refinish">Full refinish</option>
+<option value="other">Something else</option>
+</select>
+</div>
+<div class="form-group">
+<label for="details">Project details</label>
+<textarea id="details" name="details" placeholder="Tell us about your build — species, action, length, budget, timeline, or describe the repair needed…" required="" rows="5"></textarea>
+</div>
+<button class="btn btn-primary btn-full" type="submit">Send message →</button>
+<div class="form-success hidden" id="formSuccess">
+<span>✓</span> Thanks — we'll be in touch within 24 hours.
+              </div>
+</form>
+</div>
+<div class="contact-info">
+<h2>Other ways to reach us</h2>
+<div class="contact-detail">
+<div class="contact-detail-icon">✉</div>
+<div>
+<strong>Email</strong>
+<a href="mailto:hello@geerods.com">hello@geerods.com</a>
+</div>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">⏱</div>
+<div>
+<strong>Response time</strong>
+<span>Within 24 hours, Mon–Fri</span>
+</div>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">📦</div>
+<div>
+<strong>Sending a rod for repair?</strong>
+<span>Email us first and we'll confirm the address and give you a reference number.</span>
+</div>
+</div>
+<div class="contact-note">
+<h4>What to include in your message</h4>
+<ul>
+<li>Target species and fishing style</li>
+<li>Preferred rod length and action</li>
+<li>Handle preference (cork / EVA / split)</li>
+<li>Budget range</li>
+<li>Any deadline or timeline</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</div><!-- /page-contact -->
+</main>
+<!-- ═══════════════════════════════════════════
+       STATIC FOOTER — never moves
+  ════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+<div class="footer-inner">
+<div class="footer-brand">
+<div aria-hidden="true" class="brand-mark small">G</div>
+<div>
+<span class="brand-name">GeeRods</span>
+<span class="footer-tagline">Custom Rod Building &amp; Repair</span>
+</div>
+</div>
+<nav aria-label="Footer navigation" class="footer-nav">
+<a data-page="home" href="#">Home</a>
+<a data-page="builds" href="#">Builds</a>
+<a data-page="repairs" href="#">Repairs</a>
+<a data-page="gallery" href="#">Gallery</a>
+<a data-page="contact" href="#">Contact</a>
+</nav>
+<div class="footer-contact">
+<a href="mailto:hello@geerods.com">hello@geerods.com</a>
+</div>
+</div>
+<div class="footer-base">
+<span>© 2026 GeeRods. All rights reserved.</span>
+<span>Hand-built in the UK.</span>
+</div>
+</footer>
+<script src="content.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

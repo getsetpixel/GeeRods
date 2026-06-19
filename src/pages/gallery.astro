@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { gallery } from '../data/site.js';
+---
+<Layout title="Gallery — GeeRods" description="A selection of recent builds and repairs from the GeeRods workshop — every rod shown was built or restored by hand.">
+
+  <section class="page-hero">
+    <div class="page-hero-copy">
+      <span class="eyebrow">Gallery</span>
+      <h1>The work speaks for itself.</h1>
+      <p>A selection of recent builds and repairs from the GeeRods workshop — every rod shown was built or restored by hand.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="gallery-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="builds">Builds</button>
+      <button class="filter-btn" data-filter="repairs">Repairs</button>
+      <button class="filter-btn" data-filter="detail">Detail shots</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      {gallery.map(item => (
+        <figure
+          class="gallery-item"
+          data-category={item.category}
+          tabindex="0"
+          role="button"
+          aria-label={`View: ${item.caption}`}
+        >
+          <img src={item.image} alt={item.alt} loading="lazy" />
+          <figcaption>{item.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // ── Gallery filter ─────────────────────────────
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const grid       = document.getElementById('galleryGrid');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = (btn as HTMLElement).dataset.filter;
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      grid?.querySelectorAll('.gallery-item').forEach(item => {
+        const match = filter === 'all' || (item as HTMLElement).dataset.category === filter;
+        item.classList.toggle('hidden', !match);
+      });
+      rebindLightbox();
+    });
+  });
+
+  // ── Lightbox ───────────────────────────────────
+  type LightboxItem = { src: string; alt: string; caption: string };
+  let items:   LightboxItem[] = [];
+  let current  = 0;
+
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox-overlay';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('aria-label', 'Image viewer');
+  overlay.innerHTML = `
+    <button class="lightbox-close" aria-label="Close image viewer">&#10005;</button>
+    <button class="lightbox-prev"  aria-label="Previous image">&#8249;</button>
+    <button class="lightbox-next"  aria-label="Next image">&#8250;</button>
+    <figure class="lightbox-figure">
+      <img class="lightbox-img" src="" alt="" style="transition:opacity 0.15s ease">
+      <figcaption class="lightbox-caption"></figcaption>
+    </figure>
+  `;
+  document.body.appendChild(overlay);
+
+  const lbImg     = overlay.querySelector('.lightbox-img') as HTMLImageElement;
+  const lbCaption = overlay.querySelector('.lightbox-caption') as HTMLElement;
+  const lbPrev    = overlay.querySelector('.lightbox-prev') as HTMLButtonElement;
+  const lbNext    = overlay.querySelector('.lightbox-next') as HTMLButtonElement;
+  const lbClose   = overlay.querySelector('.lightbox-close') as HTMLButtonElement;
+
+  function renderSlide() {
+    const item      = items[current];
+    lbImg.src       = item.src;
+    lbImg.alt       = item.alt;
+    lbCaption.textContent = item.caption;
+    lbPrev.style.display  = items.length < 2 ? 'none' : '';
+    lbNext.style.display  = items.length < 2 ? 'none' : '';
+  }
+
+  function open(index: number) {
+    current = index;
+    renderSlide();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
+  function close() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function step(dir: number) {
+    current = (current + dir + items.length) % items.length;
+    lbImg.style.opacity = '0';
+    setTimeout(() => { renderSlide(); lbImg.style.opacity = '1'; }, 120);
+  }
+
+  lbClose.addEventListener('click', close);
+  lbPrev.addEventListener('click', () => step(-1));
+  lbNext.addEventListener('click', () => step(1));
+  overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', e => {
+    if (!overlay.classList.contains('open')) return;
+    if (e.key === 'Escape')     close();
+    if (e.key === 'ArrowLeft')  step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+
+  function rebindLightbox() {
+    const visible = [...(grid?.querySelectorAll('.gallery-item:not(.hidden)') ?? [])] as HTMLElement[];
+    items = visible.map(fig => ({
+      src:     (fig.querySelector('img') as HTMLImageElement).src,
+      alt:     (fig.querySelector('img') as HTMLImageElement).alt,
+      caption: fig.querySelector('figcaption')?.textContent ?? '',
+    }));
+
+    visible.forEach((fig, i) => {
+      fig.onclick    = () => open(i);
+      fig.onkeydown  = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); } };
+    });
+  }
+
+  rebindLightbox();
+</script>

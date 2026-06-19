@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { buildTypes } from '../data/site.js';
+---
+<Layout title="Custom Builds — GeeRods" description="Bespoke fishing rods built to your exact specification. Blank selection, guide wrapping, handle fitting and custom finish.">
+
+  <section class="page-hero">
+    <div class="page-hero-copy">
+      <span class="eyebrow">Custom Builds</span>
+      <h1>Built around the way you fish.</h1>
+      <p>Every rod starts with a conversation. We select the blank, wrap the guides and finish the handle to match your species, style and budget — no compromises.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-head">
+      <span class="eyebrow">What's included</span>
+      <h2>Every build, fully bespoke</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">⬡</div>
+        <h4>Blank selection</h4>
+        <p>Carbon, composite or fibreglass — we source from trusted suppliers and match the blank to your target species and casting style.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">◎</div>
+        <h4>Guide wrapping</h4>
+        <p>Guides positioned by hand for optimal line flow, wrapped in your choice of thread colour and sealed with a durable epoxy finish.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">▭</div>
+        <h4>Handle &amp; reel seat</h4>
+        <p>Cork, EVA or custom split-grip — fitted and shaped to your hand size and preferred casting style.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">◈</div>
+        <h4>Custom finish</h4>
+        <p>Decorative wraps, colour bands and personalised details available — your rod, your identity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section alt-bg">
+    <div class="section-head">
+      <span class="eyebrow">Build types</span>
+      <h2>What we build</h2>
+    </div>
+    <div class="build-types">
+      {buildTypes.map(b => (
+        <div class="build-type-card">
+          <img src={b.image} alt={b.alt} loading="lazy" />
+          <div class="build-type-body">
+            <h4>{b.title}</h4>
+            <p>{b.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="cta-inline">
+      <h2>Ready to start your build?</h2>
+      <p>Fill in the quote form and we'll come back to you within 24 hours with a full spec and price.</p>
+      <a href="/contact" class="btn btn-primary">Get a build quote →</a>
+    </div>
+  </section>
+
+</Layout>

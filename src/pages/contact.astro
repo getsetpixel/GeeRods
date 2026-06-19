@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Get a Quote — GeeRods" description="Get in touch about a custom rod build or repair. We'll respond within 24 hours with a full spec and price.">
+
+  <section class="page-hero">
+    <div class="page-hero-copy">
+      <span class="eyebrow">Get in Touch</span>
+      <h1>Let's build something.</h1>
+      <p>Whether you have a full spec in mind or just a species and a budget — get in touch and we'll take it from there.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="contact-layout">
+      <div class="contact-form-wrap">
+        <h2>Send us a message</h2>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First name</label>
+              <input type="text" id="fname" name="fname" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last name</label>
+              <input type="text" id="lname" name="lname" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="service">What do you need?</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option value="custom-build">Custom rod build</option>
+              <option value="repair">Rod repair</option>
+              <option value="refinish">Full refinish</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="details">Project details</label>
+            <textarea id="details" name="details" rows="5" placeholder="Tell us about your build — species, action, length, budget, timeline, or describe the repair needed…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Send message →</button>
+          <div class="form-success hidden" id="formSuccess">
+            <span>✓</span> Thanks — we'll be in touch within 24 hours.
+          </div>
+        </form>
+      </div>
+
+      <div class="contact-info">
+        <h2>Other ways to reach us</h2>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">✉</div>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:hello@geerods.com">hello@geerods.com</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">⏱</div>
+          <div>
+            <strong>Response time</strong>
+            <span>Within 24 hours, Mon–Fri</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📦</div>
+          <div>
+            <strong>Sending a rod for repair?</strong>
+            <span>Email us first and we'll confirm the address and give you a reference number.</span>
+          </div>
+        </div>
+        <div class="contact-note">
+          <h4>What to include in your message</h4>
+          <ul>
+            <li>Target species and fishing style</li>
+            <li>Preferred rod length and action</li>
+            <li>Handle preference (cork / EVA / split)</li>
+            <li>Budget range</li>
+            <li>Any deadline or timeline</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  const form    = document.getElementById('contactForm') as HTMLFormElement;
+  const success = document.getElementById('formSuccess') as HTMLElement;
+  if (!form) throw new Error();
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    let valid = true;
+
+    form.querySelectorAll('[required]').forEach(field => {
+      (field as HTMLElement).style.borderColor = '';
+      if (!(field as HTMLInputElement).value.trim()) {
+        (field as HTMLElement).style.borderColor = '#e05555';
+        valid = false;
+      }
+    });
+    if (!valid) return;
+
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    btn.textContent = 'Sending…';
+    btn.disabled    = true;
+
+    setTimeout(() => {
+      form.reset();
+      btn.textContent = 'Send message →';
+      btn.disabled    = false;
+      success.classList.remove('hidden');
+      setTimeout(() => success.classList.add('hidden'), 5000);
+    }, 1200);
+  });
+</script>

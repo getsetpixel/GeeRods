@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+<Layout title="Blog — GeeRods" description="Tips, build diaries and fishing know-how from the GeeRods workshop.">
+
+  <section class="page-hero">
+    <div class="page-hero-copy">
+      <span class="eyebrow">Blog</span>
+      <h1>From the workshop.</h1>
+      <p>Build diaries, technique tips and everything in between — written by the person actually making the rods.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    {posts.length === 0 ? (
+      <p style="color: var(--text-muted)">No posts yet — check back soon.</p>
+    ) : (
+      <div class="blog-grid">
+        {posts.map(post => (
+          <a href={`/blog/${post.slug}`} class="blog-card">
+            {post.data.image ? (
+              <div class="blog-card-img">
+                <img src={post.data.image} alt={post.data.imageAlt} loading="lazy" />
+              </div>
+            ) : (
+              <div class="blog-card-img-placeholder">✦</div>
+            )}
+            <div class="blog-card-body">
+              {post.data.tags.length > 0 && (
+                <div class="blog-tags">
+                  {post.data.tags.map(tag => <span class="blog-tag">{tag}</span>)}
+                </div>
+              )}
+              <div class="blog-card-meta">
+                <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+              </div>
+              <h2>{post.data.title}</h2>
+              {post.data.description && <p>{post.data.description}</p>}
+              <span class="blog-card-link">Read more →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+
+</Layout>

@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { heroSlides, stats, buildTypes } from '../data/site.js';
+
+const firstSlide = heroSlides[0];
+---
+<Layout title="GeeRods — Custom Rod Building & Repair">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Custom Rod Specialist · UK</span>
+      <h1>Rods built the way you fish.</h1>
+      <p>Every blank hand-selected, every guide hand-wrapped. GeeRods builds bespoke fishing rods and carries out expert repairs — crafted to your exact spec, finished to last a lifetime.</p>
+      <div class="hero-actions">
+        <a href="/contact" class="btn btn-primary">Get a Quote ↗</a>
+        <a href="/gallery" class="btn btn-ghost">View Gallery</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-img-wrap">
+          <img id="heroImg" src={firstSlide.image} alt={firstSlide.alt} />
+          <div class="hero-badge">
+            <span id="heroLabel">{firstSlide.label}</span>
+            <strong id="heroTitle">{firstSlide.title}</strong>
+          </div>
+        </div>
+        <div class="hero-thumbs" id="heroThumbs"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-strip">
+    {stats.map((s, i) => (
+      <>
+        {i > 0 && <div class="stat-divider" aria-hidden="true" />}
+        <div class="stat">
+          <strong>{s.value}</strong>
+          <span>{s.label}</span>
+        </div>
+      </>
+    ))}
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="section-head">
+      <span class="eyebrow">What we do</span>
+      <h2>Three ways we can help</h2>
+    </div>
+    <div class="services-grid">
+      <a href="/builds" class="service-card">
+        <div class="service-img">
+          <img src="https://www.marlinmag.com/wp-content/uploads/2022/02/custom-fishing-rod-sculpting-1024x768.jpg" alt="Custom rod building" />
+          <span class="service-num">01</span>
+        </div>
+        <div class="service-body">
+          <h3>Custom Builds</h3>
+          <p>Bespoke blanks, hand-wrapped guides and custom finishes built to your exact spec — species, action, length and handle style all chosen by you.</p>
+          <span class="service-link">Explore builds →</span>
+        </div>
+      </a>
+      <a href="/repairs" class="service-card">
+        <div class="service-img">
+          <img src="https://badangling.com/wp-content/uploads/2020/03/13LineUp-600x398.jpg" alt="Rod repair and refinishing" />
+          <span class="service-num">02</span>
+        </div>
+        <div class="service-body">
+          <h3>Repairs</h3>
+          <p>Snapped tips, worn guides, loose reel seats and full refinishing — fast turnaround, premium materials, and a finish that looks factory-fresh.</p>
+          <span class="service-link">Explore repairs →</span>
+        </div>
+      </a>
+      <a href="/contact" class="service-card">
+        <div class="service-img">
+          <img src="https://files.osgnetworks.tv/15/files/2017/12/Wrap-Threads-Up-by-Tip-Top-Guide.jpg" alt="Guide wrapping detail" />
+          <span class="service-num">03</span>
+        </div>
+        <div class="service-body">
+          <h3>Get in Touch</h3>
+          <p>Tell us about your next build or repair. We'll map the ideal blank, action and finish — and give you a clear quote with no surprises.</p>
+          <span class="service-link">Contact us →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>From brief to blank in four steps</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>Tell us your spec</h4>
+        <p>Species, action, length, budget — fill in the quote form or drop us an email.</p>
+      </div>
+      <div class="process-arrow" aria-hidden="true">→</div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>We source the blank</h4>
+        <p>We hand-pick the right blank from our trusted suppliers and confirm the build plan.</p>
+      </div>
+      <div class="process-arrow" aria-hidden="true">→</div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>Hand-built for you</h4>
+        <p>Guides wrapped, handle fitted, finish applied — every step done by hand in our workshop.</p>
+      </div>
+      <div class="process-arrow" aria-hidden="true">→</div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4>Delivered ready to fish</h4>
+        <p>Fully inspected, carefully packaged and shipped directly to your door.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="cta-banner-inner">
+      <h2>Ready to spec your rod?</h2>
+      <p>Tell us what you're fishing for and we'll build something that performs exactly the way you need it to.</p>
+      <a href="/contact" class="btn btn-primary">Start your build →</a>
+    </div>
+  </section>
+
+</Layout>
+
+<script define:vars={{ heroSlides }}>
+  let current   = 0;
+  let autoTimer = null;
+
+  function update(index) {
+    current     = (index + heroSlides.length) % heroSlides.length;
+    const slide = heroSlides[current];
+    const img   = document.getElementById('heroImg');
+    const label = document.getElementById('heroLabel');
+    const title = document.getElementById('heroTitle');
+    if (!img || !label || !title) return;
+
+    img.style.opacity   = '0';
+    img.style.transform = 'scale(1.04)';
+    setTimeout(() => {
+      img.src           = slide.image;
+      img.alt           = slide.alt;
+      label.textContent = slide.label;
+      title.textContent = slide.title;
+      img.style.opacity   = '1';
+      img.style.transform = 'scale(1)';
+    }, 200);
+
+    document.querySelectorAll('.thumb-button').forEach((btn, i) => {
+      btn.classList.toggle('active', i === current);
+    });
+  }
+
+  function stopAuto()  { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+  function startAuto() { stopAuto(); autoTimer = setInterval(() => update(current + 1), 4500); }
+
+  // Build thumbs
+  const container = document.getElementById('heroThumbs');
+  if (container) {
+    container.innerHTML = heroSlides.map((slide, i) => `
+      <button class="thumb-button${i === 0 ? ' active' : ''}" type="button" aria-label="${slide.label}">
+        <img src="${slide.image}" alt="${slide.alt}" loading="lazy">
+      </button>
+    `).join('');
+    container.querySelectorAll('.thumb-button').forEach((btn, i) => {
+      btn.addEventListener('click', () => { stopAuto(); update(i); startAuto(); });
+    });
+  }
+
+  // Build arrows
+  const wrap = document.querySelector('.hero-img-wrap');
+  if (wrap) {
+    ['prev','next'].forEach(dir => {
+      const btn = document.createElement('button');
+      btn.className   = `hero-arrow hero-arrow--${dir}`;
+      btn.innerHTML   = dir === 'prev' ? '&#8249;' : '&#8250;';
+      btn.setAttribute('aria-label', dir === 'prev' ? 'Previous slide' : 'Next slide');
+      btn.addEventListener('click', () => { stopAuto(); update(current + (dir === 'prev' ? -1 : 1)); startAuto(); });
+      wrap.appendChild(btn);
+    });
+  }
+
+  const img = document.getElementById('heroImg');
+  if (img) img.style.transition = 'opacity 0.3s ease, transform 0.5s ease';
+
+  startAuto();
+</script>

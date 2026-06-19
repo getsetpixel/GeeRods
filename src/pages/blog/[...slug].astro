@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props:  { post },
+  }));
+}
+
+const { post }    = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+<Layout title={`${post.data.title} — GeeRods`} description={post.data.description}>
+
+  <a href="/blog" class="blog-back">← Back to blog</a>
+
+  <div class="blog-post-header">
+    {post.data.tags.length > 0 && (
+      <div class="blog-tags">
+        {post.data.tags.map(tag => <span class="blog-tag">{tag}</span>)}
+      </div>
+    )}
+    <h1>{post.data.title}</h1>
+    <div class="blog-post-meta">
+      <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+    </div>
+  </div>
+
+  {post.data.image && (
+    <div class="blog-post-image">
+      <img src={post.data.image} alt={post.data.imageAlt} />
+    </div>
+  )}
+
+  <div class="blog-post-body">
+    <Content />
+  </div>
+
+</Layout>
