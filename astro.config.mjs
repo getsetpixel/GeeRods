@@ -7,7 +7,7 @@ import { defineConfig } from 'astro/config';
 // also uncomment 'base' and set it to your repo name, e.g. '/geerods'
 // ────────────────────────────────────────────────────────────────────────────
 export default defineConfig({
-  site: 'https://yourusername.github.io',
-  // base: '/geerods',
+  site: 'https://getsetpixel.github.io',
+  base: '/GeeRods',
   output: 'static',
 });
